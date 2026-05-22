@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-card">
+  <h2>User Login</h2>
+  <form method="post">
+    <label>CBK Account Number<span>*</span></label>
+    <input type="text" name="account_number" required>
+
+    <label>Login Method<span>*</span></label>
+    <select name="method" id="method-select" onchange="updateCredentialLabel()">
+      <option value="mpin">MPIN</option>
+      <option value="biometric">Biometric Phrase</option>
+    </select>
+
+    <label id="credential-label">Enter MPIN<span>*</span></label>
+    <input type="password" name="credential" id="credential-input" required>
+
+    <button type="submit">Login</button>
+  </form>
+</div>
+<script>
+function updateCredentialLabel() {
+  const method = document.getElementById('method-select').value;
+  const label = document.getElementById('credential-label');
+  label.textContent = method === 'mpin' ? 'Enter MPIN*' : 'Enter biometric phrase*';
+}
+</script>
+{% endblock %}

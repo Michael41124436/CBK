@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-card">
+  <h2>Request Account Statement</h2>
+  <p>Choose the date range for your statement request. The system will record your request and show the history below.</p>
+  <form method="post">
+    <label>Start Date<span>*</span></label>
+    <input type="date" name="start_date" required>
+
+    <label>End Date<span>*</span></label>
+    <input type="date" name="end_date" required>
+
+    <button type="submit">Submit Statement Request</button>
+  </form>
+  {% if message %}
+    <div class="flash success" style="margin-top: 20px;">{{ message }}</div>
+  {% endif %}
+  {% if account.statement_requests %}
+  <div class="page-card" style="margin-top: 24px;">
+    <h3>Statement Request History</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Start</th>
+          <th>End</th>
+          <th>Requested</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for req in account.statement_requests|reverse %}
+        <tr>
+          <td>{{ req.start_date }}</td>
+          <td>{{ req.end_date }}</td>
+          <td>{{ req.requested_at[:19].replace('T', ' ') }}</td>
+          <td>{{ req.status }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <div>
+    <h1>Welcome to CBK</h1>
+    <p>CBK is your trusted banking partner for secure accounts, biometric login, MPIN access, transfers, loans, and instant profile access.</p>
+    <div class="hero-buttons">
+      <a class="button" href="{{ url_for('register') }}">Create an Account</a>
+      <a class="button button-secondary" href="{{ url_for('login') }}">Login</a>
+    </div>
+  </div>
+</section>
+<section class="features">
+  <div class="feature-card">
+    <h2>Fast Account Setup</h2>
+    <p>Create an account with your ID or Passport, upload a profile photo, and secure your account with MPIN and biometric phrase.</p>
+  </div>
+  <div class="feature-card">
+    <h2>Bank Transfers</h2>
+    <p>Send money to 19 partner banks across Kenya with a simple transfer flow from your dashboard.</p>
+  </div>
+  <div class="feature-card">
+    <h2>Loan Service</h2>
+    <p>Request a loan directly from your account dashboard and get a quick approval decision.</p>
+  </div>
+</section>
+{% endblock %}

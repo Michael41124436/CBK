@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-card">
+  <h2>Create CBK Account</h2>
+  <form method="post" enctype="multipart/form-data">
+    <label>Full Name<span>*</span></label>
+    <input type="text" name="full_name" required>
+
+    <label>ID type<span>*</span></label>
+    <select name="id_type">
+      <option value="National ID">National ID</option>
+      <option value="Passport">Passport</option>
+    </select>
+
+    <label>ID / Passport Number<span>*</span></label>
+    <input type="text" name="id_number" required>
+
+    <label>Phone Number<span>*</span></label>
+    <input type="text" name="phone" required>
+
+    <label>Biometric Phrase<span>*</span></label>
+    <input type="text" name="biometric" required>
+
+    <label>MPIN (4 digits)<span>*</span></label>
+    <input type="password" name="mpin" maxlength="4" required>
+
+    <label>Profile Photo<span>*</span></label>
+    <input type="file" name="photo" accept="image/*" required>
+
+    <label>ID / Passport Front Image<span>*</span></label>
+    <input type="file" name="id_front" accept="image/*" required>
+
+    <label>ID / Passport Back Image<span>*</span></label>
+    <input type="file" name="id_back" accept="image/*" required>
+
+    <label>Passport Front Image</label>
+    <input type="file" name="passport_front" accept="image/*">
+
+    <label>Passport Back Image</label>
+    <input type="file" name="passport_back" accept="image/*">
+
+    <button type="submit">Create Account</button>
+  </form>
+</div>
+{% endblock %}

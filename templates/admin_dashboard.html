@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-card">
+  <h2>Admin Dashboard</h2>
+  <p>Signed in as admin. Manage CBK customer accounts below.</p>
+  {% if accounts %}
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Account Number</th>
+        <th>Name</th>
+        <th>ID Type</th>
+        <th>ID Number</th>
+        <th>Phone</th>
+        <th>Balance</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for account in accounts.values() %}
+      <tr>
+        <td>{{ account.account_number }}</td>
+        <td>{{ account.name }}</td>
+        <td>{{ account.id_type }}</td>
+        <td>{{ account.id_number }}</td>
+        <td>{{ account.phone }}</td>
+        <td>KES {{ '%.2f'|format(account.balance) }}</td>
+        <td>{{ account.created_at[:10] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No customer accounts have been created yet.</p>
+  {% endif %}
+  <a class="button button-secondary" href="{{ url_for('admin_logout') }}">Logout</a>
+</div>

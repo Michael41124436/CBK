@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-card">
+  <h2>Loan Request</h2>
+  <p>Use this page to request a loan from CBK. Loan decisions are based on your profile and account activity.</p>
+  <form method="post">
+    <label>Loan Amount (KES)<span>*</span></label>
+    <input type="number" step="0.01" name="loan_amount" required>
+
+    <label>Loan Purpose<span>*</span></label>
+    <input type="text" name="purpose" required>
+
+    <button type="submit">Request Loan</button>
+  </form>
+  {% if approved is not none %}
+    <div class="loan-result {{ 'success' if approved else 'error' }}">
+      <p>{{ message }}</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

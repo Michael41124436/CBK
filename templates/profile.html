@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-card">
+  <h2>Your Profile</h2>
+  <div class="profile-grid">
+    <div>
+      <p><strong>Name:</strong> {{ account.name }}</p>
+      <p><strong>Account Number:</strong> {{ account.account_number }}</p>
+      <p><strong>ID Number:</strong> {{ account.id_number }}</p>
+      <p><strong>ID Type:</strong> {{ account.id_type }}</p>
+      <p><strong>Phone:</strong> {{ account.phone }}</p>
+      <p><strong>Balance:</strong> KES {{ '%.2f'|format(account.balance) }}</p>
+      <p><strong>Created:</strong> {{ account.created_at[:10] }}</p>
+    </div>
+    <div class="profile-images">
+      {% if account.photo %}
+      <div>
+        <strong>Photo</strong>
+        <img src="/uploads/{{ account.photo }}" alt="Profile photo">
+      </div>
+      {% endif %}
+      {% if account.id_front %}
+      <div>
+        <strong>ID Front</strong>
+        <img src="/uploads/{{ account.id_front }}" alt="ID front">
+      </div>
+      {% endif %}
+      {% if account.id_back %}
+      <div>
+        <strong>ID Back</strong>
+        <img src="/uploads/{{ account.id_back }}" alt="ID back">
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <a class="button" href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</div>
+{% endblock %}
