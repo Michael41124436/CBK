@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-card">
+  <h2>Admin Withdraw Funds</h2>
+  <form method="post">
+    <label>Account Number</label>
+    <select name="account_number">
+      {% for acc in accounts.values() %}
+      <option value="{{ acc.account_number }}">{{ acc.account_number }} - {{ acc.name }}</option>
+      {% endfor %}
+    </select>
+
+    <label>Amount (KES)</label>
+    <input type="text" name="amount">
+
+    <button type="submit">Withdraw</button>
+  </form>
+</div>
+{% endblock %}

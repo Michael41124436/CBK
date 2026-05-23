@@ -2,36 +2,212 @@
 {% block content %}
 <div class="page-card">
   <h2>Admin Dashboard</h2>
-  <p>Signed in as admin. Manage CBK customer accounts below.</p>
-  {% if accounts %}
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th>Account Number</th>
-        <th>Name</th>
-        <th>ID Type</th>
-        <th>ID Number</th>
-        <th>Phone</th>
-        <th>Balance</th>
-        <th>Created</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for account in accounts.values() %}
-      <tr>
-        <td>{{ account.account_number }}</td>
-        <td>{{ account.name }}</td>
-        <td>{{ account.id_type }}</td>
-        <td>{{ account.id_number }}</td>
-        <td>{{ account.phone }}</td>
-        <td>KES {{ '%.2f'|format(account.balance) }}</td>
-        <td>{{ account.created_at[:10] }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% else %}
-  <p>No customer accounts have been created yet.</p>
-  {% endif %}
+  <p>Signed in as admin. Manage CBK customer accounts, deposits, and transfer approvals.</p>
+  <div class="dashboard-grid">
+    <div class="dashboard-box">
+      <h3>Pending Account Approvals</h3>
+      {% if pending_accounts %}
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Account</th>
+            <th>Name</th>
+            <th>ID Type</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for account in pending_accounts %}
+          <tr>
+            <td>{{ account.account_number }}</td>
+            <td>{{ account.name }}</td>
+            <td>{{ account.id_type }}</td>
+            <td>{{ account.status }}</td>
+            <td>
+              <a class="button" href="{{ url_for('admin_view_documents', account_number=account.account_number) }}" style="display:inline-block; margin-right:8px;">View Docs</a>
+              <form method="post" action="{{ url_for('admin_approve_account', account_number=account.account_number) }}" style="display:inline-block;">
+                <button type="submit" class="button">Approve</button>
+              </form>
+              <form method="post" action="{{ url_for('admin_reject_account', account_number=account.account_number) }}" style="display:inline-block; margin-left:8px;">
+                <button type="submit" class="button button-secondary">Reject</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No pending account approvals.</p>
+      {% endif %}
+    </div>
+    <div class="dashboard-box">
+      <h3>Pending Transfer Requests</h3>
+      {% if pending_transfers %}
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Txn ID</th>
+            <th>Sender</th>
+            <th>Bank</th>
+            <th>Account</th>
+            <th>Amount</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for transfer in pending_transfers %}
+          <tr>
+            <td>{{ transfer.transaction_id }}</td>
+            <td>{{ transfer.account_number }}</td>
+            <td>{{ transfer.bank }}</td>
+            <td>{{ transfer.destination_account }}</td>
+            <td>{{ transfer.currency_symbol }}{{ '%.2f'|format(transfer.amount) }}</td>
+            <td>
+              <form method="post" action="{{ url_for('admin_approve_transfer', account_number=transfer.account_number, transaction_id=transfer.transaction_id) }}" style="display:inline-block;">
+                <button type="submit" class="button">Approve</button>
+              </form>
+              <form method="post" action="{{ url_for('admin_reject_transfer', account_number=transfer.account_number, transaction_id=transfer.transaction_id) }}" style="display:inline-block; margin-left:8px;">
+                <button type="submit" class="button button-secondary">Reject</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No pending transfers.</p>
+      {% endif %}
+    </div>
+    <div class="dashboard-box">
+      <h3>Pending KYC Verifications</h3>
+      {% if pending_kyc %}
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Account</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for account in pending_kyc %}
+          <tr>
+            <td>{{ account.account_number }}</td>
+            <td>{{ account.name }}</td>
+            <td>{{ account.email }}</td>
+            <td>
+              <a class="button" href="{{ url_for('admin_view_documents', account_number=account.account_number) }}" style="display:inline-block; margin-right:8px;">View Docs</a>
+              <form method="post" action="{{ url_for('admin_verify_kyc', account_number=account.account_number) }}" style="display:inline-block;">
+                <button type="submit" class="button">Verify KYC</button>
+              </form>
+              <form method="post" action="{{ url_for('admin_reject_kyc', account_number=account.account_number) }}" style="display:inline-block; margin-left:8px;">
+                <button type="submit" class="button button-secondary">Reject</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No pending KYC verifications.</p>
+      {% endif %}
+    </div>
+    <div class="dashboard-box">
+      <h3>Pending Loan Requests</h3>
+      {% if pending_loans %}
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Loan ID</th>
+            <th>Account</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for loan in pending_loans %}
+          <tr>
+            <td>{{ loan.loan_id }}</td>
+            <td>{{ loan.account_number }}</td>
+            <td>{{ loan.name }}</td>
+            <td>{{ loan.currency_symbol }}{{ '%.2f'|format(loan.amount) }}</td>
+            <td>
+              <form method="post" action="{{ url_for('admin_approve_loan', account_number=loan.account_number, loan_id=loan.loan_id) }}" style="display:inline-block;">
+                <button type="submit" class="button">Approve</button>
+              </form>
+              <form method="post" action="{{ url_for('admin_reject_loan', account_number=loan.account_number, loan_id=loan.loan_id) }}" style="display:inline-block; margin-left:8px;">
+                <button type="submit" class="button button-secondary">Reject</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No pending loans.</p>
+      {% endif %}
+    </div>
+    <div class="dashboard-box">
+      <h3>Admin Controls</h3>
+      <p>Create accounts, run reports, and manage customer access.</p>
+      <a class="button" href="{{ url_for('admin_create_customer') }}">Create Customer</a>
+      <a class="button button-secondary" href="{{ url_for('admin_reports') }}" style="margin-left:8px;">Reports</a>
+      <a class="button" href="{{ url_for('admin_settings') }}" style="margin-left:8px;">Settings</a>
+    </div>
+    <div class="dashboard-box">
+      <h3>Admin Deposit</h3>
+      <p>Deposit money into a customer account.</p>
+      <a class="button" href="{{ url_for('admin_deposit') }}">Make Deposit</a>
+      <a class="button button-secondary" href="{{ url_for('admin_withdraw') }}" style="margin-left:8px;">Withdraw</a>
+    </div>
+  </div>
+  <div class="page-card" style="margin-top: 24px;">
+    <h3>Customer Accounts</h3>
+    {% if accounts %}
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Account Number</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Balance</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for account in accounts.values() %}
+        <tr>
+          <td>{{ account.account_number }}</td>
+          <td>{{ account.name }}</td>
+          <td>{{ account.email }}</td>
+          <td>{{ account.status }}{% if account.frozen %} / Frozen{% endif %}</td>
+          <td>{{ account.currency_symbol }}{{ '%.2f'|format(account.balance) }}</td>
+          <td>
+            <form method="post" action="{{ url_for('admin_delete_account', account_number=account.account_number) }}" style="display:inline-block;">
+              <button type="submit" class="button button-secondary">Delete</button>
+            </form>
+            {% if account.frozen %}
+            <form method="post" action="{{ url_for('admin_unfreeze_account', account_number=account.account_number) }}" style="display:inline-block; margin-left:8px;">
+              <button type="submit" class="button">Unfreeze</button>
+            </form>
+            {% else %}
+            <form method="post" action="{{ url_for('admin_freeze_account', account_number=account.account_number) }}" style="display:inline-block; margin-left:8px;">
+              <button type="submit" class="button button-secondary">Freeze</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No customer accounts have been created yet.</p>
+    {% endif %}
+  </div>
   <a class="button button-secondary" href="{{ url_for('admin_logout') }}">Logout</a>
 </div>
+{% endblock %}

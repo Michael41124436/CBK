@@ -19,6 +19,7 @@ body {
   font-size: 1.3rem;
   font-weight: 700;
 }
+.logo { height:28px; vertical-align:middle; margin-right:8px }
 
 .topbar nav a {
   margin: 0 10px;
@@ -165,14 +166,19 @@ button:hover,
 .dashboard-grid {
   display: grid;
   gap: 20px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   margin-bottom: 24px;
 }
 
+.dashboard-box,
 .dashboard-panel {
   padding: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 18px;
+  border: 1px solid rgba(37, 99, 235, 0.16);
 }
 
+.dashboard-box h3,
 .dashboard-panel h3 {
   margin-top: 0;
 }

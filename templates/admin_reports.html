@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-card">
+  <h2>Admin Reports</h2>
+  <div class="dashboard-grid">
+    <div class="dashboard-box">
+      <h3>Account Summary</h3>
+      <p>Total accounts: {{ metrics.total_accounts }}</p>
+      <p>Active accounts: {{ metrics.active_accounts }}</p>
+      <p>Pending approval: {{ metrics.pending_accounts }}</p>
+      <p>Frozen accounts: {{ metrics.frozen_accounts }}</p>
+    </div>
+    <div class="dashboard-box">
+      <h3>Financial Summary</h3>
+      <p>Total balance: {{ metrics.total_balance }}</p>
+      <p>Outstanding loans: {{ metrics.outstanding_loans }}</p>
+      <p>Pending loan requests: {{ metrics.pending_loans }}</p>
+    </div>
+    <div class="dashboard-box">
+      <h3>Loan Tracking</h3>
+      <p>Approved loans: {{ metrics.approved_loans }}</p>
+      <p>Rejected loans: {{ metrics.rejected_loans }}</p>
+      <p>Loan eligibility hit rate: {{ metrics.loan_eligibility_rate }}%</p>
+    </div>
+  </div>
+  <div class="page-card" style="margin-top: 24px;">
+    <h3>Recent Approved Loans</h3>
+    {% if metrics.recent_loans %}
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Loan ID</th>
+          <th>Account</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Repayment</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for loan in metrics.recent_loans %}
+        <tr>
+          <td>{{ loan.loan_id }}</td>
+          <td>{{ loan.account_number }}</td>
+          <td>{{ loan.currency_symbol }}{{ '%.2f'|format(loan.amount) }}</td>
+          <td>{{ loan.status }}</td>
+          <td>{{ loan.repayment_term }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No recent approved loans.</p>
+    {% endif %}
+  </div>
+  <a class="button button-secondary" href="{{ url_for('admin_dashboard') }}" style="margin-top: 20px; display: inline-block;">Back to Admin Dashboard</a>
+</div>
+{% endblock %}

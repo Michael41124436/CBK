@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-card">
+  <h2>Admin Deposit</h2>
+  <form method="post">
+    <label>Select Account<span>*</span></label>
+    <select name="account_number" required>
+      <option value="">Choose account</option>
+      {% for account in accounts.values() %}
+      <option value="{{ account.account_number }}">{{ account.account_number }} - {{ account.name }}</option>
+      {% endfor %}
+    </select>
+
+    <label>Amount to deposit<span>*</span></label>
+    <input type="number" step="0.01" name="amount" placeholder="Amount KES" required>
+
+    <button type="submit">Deposit Funds</button>
+  </form>
+  <a class="button button-secondary" href="{{ url_for('admin_dashboard') }}" style="margin-top: 20px; display: inline-block;">Back to Admin Dashboard</a>
+</div>
+{% endblock %}

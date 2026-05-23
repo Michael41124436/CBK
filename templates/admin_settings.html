@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-card">
+  <h2>Admin Settings</h2>
+  <div class="dashboard-grid">
+    <div class="dashboard-box">
+      <h3>Change Admin Password</h3>
+      <form method="post">
+        <label>Current Password</label>
+        <input type="password" name="current_admin_password" required>
+
+        <label>New Password</label>
+        <input type="password" name="new_admin_password" required>
+
+        <button type="submit" name="action" value="change_password">Change Password</button>
+      </form>
+    </div>
+    <div class="dashboard-box">
+      <h3>Reset Customer MPIN</h3>
+      <form method="post">
+        <label>Account Number</label>
+        <select name="reset_mpin_account" required>
+          <option value="">Select account</option>
+          {% for account in accounts.values() %}
+          <option value="{{ account.account_number }}">{{ account.account_number }} - {{ account.name }}</option>
+          {% endfor %}
+        </select>
+
+        <label>New MPIN</label>
+        <input type="password" name="new_customer_mpin" maxlength="4" required>
+
+        <button type="submit" name="action" value="reset_customer_mpin">Reset Customer MPIN</button>
+      </form>
+    </div>
+  </div>
+  <a class="button button-secondary" href="{{ url_for('admin_dashboard') }}" style="margin-top: 20px; display: inline-block;">Back to Admin Dashboard</a>
+</div>
+{% endblock %}

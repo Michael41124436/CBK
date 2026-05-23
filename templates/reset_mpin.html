@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="form-card">
+  <h2>Reset MPIN</h2>
+  <form method="post">
+    <label>Account Number</label>
+    <input type="text" name="account_number" required>
+
+    <label>Email Address</label>
+    <input type="email" name="email" required>
+
+    <label>New MPIN (4 digits)</label>
+    <input type="password" name="new_mpin" maxlength="4" required>
+
+    <label>Confirm MPIN</label>
+    <input type="password" name="confirm_mpin" maxlength="4" required>
+
+    <button type="submit">Reset MPIN</button>
+  </form>
+</div>
+{% endblock %}

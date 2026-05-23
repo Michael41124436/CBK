@@ -1,21 +1,65 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="form-card">
-  <h2>Loan Request</h2>
-  <p>Use this page to request a loan from CBK. Loan decisions are based on your profile and account activity.</p>
+  <h2>Loan Center</h2>
+  <p>Request a loan and track its status. Use the calculator below to estimate repayment.</p>
   <form method="post">
-    <label>Loan Amount (KES)<span>*</span></label>
+    <label>Loan Amount ({{ account.currency }})<span>*</span></label>
     <input type="number" step="0.01" name="loan_amount" required>
 
     <label>Loan Purpose<span>*</span></label>
     <input type="text" name="purpose" required>
 
-    <button type="submit">Request Loan</button>
-  </form>
-  {% if approved is not none %}
-    <div class="loan-result {{ 'success' if approved else 'error' }}">
-      <p>{{ message }}</p>
+    <label>Repayment Term (months)</label>
+    <input type="number" name="loan_term" min="1" value="12" required>
+
+    <div class="button-row">
+      <button type="submit" name="action" value="calculate">Calculate Payment</button>
+      <button type="submit" name="action" value="request">Request Loan</button>
     </div>
+  </form>
+
+  {% if message %}
+    <div class="flash {{ 'success' if success else 'error' }}" style="margin-top: 20px;">{{ message }}</div>
   {% endif %}
+
+  {% if loan_calculation %}
+  <div class="page-card" style="margin-top: 20px;">
+    <h3>Loan Calculator Result</h3>
+    <p>Monthly payment: {{ account.currency_symbol }}{{ '%.2f'|format(loan_calculation.monthly_payment) }}</p>
+    <p>Total repayment: {{ account.currency_symbol }}{{ '%.2f'|format(loan_calculation.total_repayment) }}</p>
+    <p>Interest rate: 12% per year</p>
+  </div>
+  {% endif %}
+
+  {% if account.loan_requests %}
+  <div class="page-card" style="margin-top: 24px;">
+    <h3>Your Loan Requests</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Loan ID</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Requested</th>
+          <th>Repayment Schedule</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for loan in account.loan_requests|reverse %}
+        <tr>
+          <td>{{ loan.loan_id }}</td>
+          <td>{{ account.currency_symbol }}{{ '%.2f'|format(loan.amount) }}</td>
+          <td>{{ loan.status }}</td>
+          <td>{{ loan.requested_at[:19].replace('T', ' ') }}</td>
+          <td>{% if loan.repayment_schedule %}{{ loan.repayment_schedule|length }} installments{% else %}-{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+
+  <a class="button button-secondary" href="{{ url_for('dashboard') }}" style="margin-top: 20px; display: inline-block;">Back to Dashboard</a>
 </div>
 {% endblock %}

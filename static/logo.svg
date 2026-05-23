@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <rect rx="16" width="120" height="120" fill="#0f3460"/>
+  <circle cx="60" cy="40" r="22" fill="#fff" />
+  <text x="60" y="46" font-size="16" font-family="Segoe UI, Tahoma, Geneva, Verdana" fill="#0f3460" text-anchor="middle">CBK</text>
+  <text x="60" y="80" font-size="10" font-family="Segoe UI, Tahoma, Geneva, Verdana" fill="#fff" text-anchor="middle">Central Banking</text>
+</svg>

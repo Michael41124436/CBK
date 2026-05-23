@@ -9,6 +9,9 @@ A simple CBK banking system built with Python and Flask.
   - Full name
   - National ID or Passport information
   - Phone number
+  - Email address
+  - Date of birth
+  - KRA PIN and KRA PIN document upload
   - Biometric phrase
   - 4-digit MPIN
   - Profile photo upload

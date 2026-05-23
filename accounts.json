@@ -1,1 +1,441 @@
-{}
+{
+  "5555520473": {
+    "account_number": "5555520473",
+    "name": "MICHAEL WANJALA JUMA",
+    "id_type": "National ID",
+    "id_number": "41124436",
+    "phone": "0700717410",
+    "email": "michaelljuma358@gmail.com",
+    "dob": "2003-11-24",
+    "kra_pin": "A1YDJSGF",
+    "kra_doc": "Untitled_kra_doc_5555520473_1779524616.jpg",
+    "biometric": "123",
+    "mpin": "4720",
+    "balance": 10040000.0,
+    "approved": true,
+    "status": "Active",
+    "transactions": [
+      {
+        "type": "Deposit",
+        "amount": 100000.0,
+        "balance": 100000.0,
+        "date": "2026-05-23T01:28:00.610001",
+        "approved_by": "admin"
+      },
+      {
+        "type": "Transfer",
+        "bank": "Co-operative Bank of Kenya",
+        "destination_account": "2467778767",
+        "amount": 10000.0,
+        "balance": 90000.0,
+        "date": "2026-05-23T01:36:01.181597",
+        "transaction_id": "TXN182034",
+        "approved_by": "admin"
+      },
+      {
+        "type": "Transfer",
+        "bank": "NCBA Bank Kenya",
+        "destination_account": "1087655443",
+        "amount": 50000.0,
+        "balance": 40000.0,
+        "date": "2026-05-23T02:23:40.316096",
+        "transaction_id": "TXN388621",
+        "approved_by": "admin"
+      },
+      {
+        "type": "Loan",
+        "amount": 300000.0,
+        "balance": 340000.0,
+        "date": "2026-05-23T02:23:59.564463",
+        "loan_id": "LOAN558792",
+        "approved_by": "admin"
+      },
+      {
+        "type": "Deposit",
+        "amount": 10000000.0,
+        "balance": 10340000.0,
+        "date": "2026-05-23T10:51:57.907515",
+        "approved_by": "admin"
+      },
+      {
+        "type": "Transfer",
+        "bank": "Co-operative Bank of Kenya",
+        "destination_account": "1111122334",
+        "amount": 300000.0,
+        "balance": 10040000.0,
+        "date": "2026-05-23T10:56:58.259162",
+        "transaction_id": "TXN258010",
+        "approved_by": "admin"
+      }
+    ],
+    "transfer_requests": [
+      {
+        "transaction_id": "TXN182034",
+        "bank": "Co-operative Bank of Kenya",
+        "destination_account": "2467778767",
+        "amount": 10000.0,
+        "status": "Completed",
+        "requested_at": "2026-05-23T01:33:44.236251",
+        "processed_at": "2026-05-23T01:36:01.181457"
+      },
+      {
+        "transaction_id": "TXN388621",
+        "bank": "NCBA Bank Kenya",
+        "destination_account": "1087655443",
+        "amount": 50000.0,
+        "status": "Completed",
+        "requested_at": "2026-05-23T02:22:26.068786",
+        "processed_at": "2026-05-23T02:23:40.315720"
+      },
+      {
+        "transaction_id": "TXN258010",
+        "bank": "Co-operative Bank of Kenya",
+        "destination_account": "1111122334",
+        "amount": 300000.0,
+        "status": "Completed",
+        "requested_at": "2026-05-23T10:55:41.115883",
+        "processed_at": "2026-05-23T10:56:58.250802"
+      }
+    ],
+    "statement_requests": [
+      {
+        "start_date": "2026-05-22",
+        "end_date": "2026-05-22",
+        "requested_at": "2026-05-23T01:31:34.144658",
+        "status": "Pending"
+      },
+      {
+        "start_date": "2026-05-22",
+        "end_date": "2026-05-23",
+        "requested_at": "2026-05-23T11:23:06.673656",
+        "status": "Pending"
+      }
+    ],
+    "loan_requests": [
+      {
+        "loan_id": "LOAN558792",
+        "amount": 300000.0,
+        "purpose": "buyt",
+        "status": "Approved",
+        "requested_at": "2026-05-23T02:21:40.276588",
+        "processed_at": "2026-05-23T02:23:59.540198"
+      }
+    ],
+    "photo": "Untitled_photo_5555520473_1779524616.jpg",
+    "id_front": "Untitled_id_front_5555520473_1779524616.jpg",
+    "id_back": "Untitled_id_back_5555520473_1779524616.jpg",
+    "passport_front": "Untitled_passport_front_5555520473_1779524616.jpg",
+    "passport_back": null,
+    "created_at": "2026-05-23T01:23:36.727768",
+    "currency": "KSH",
+    "kyc_status": "Verified",
+    "email_verified": false,
+    "email_verification_token": null,
+    "notifications": [
+      {
+        "message": "Your KYC verification is complete.",
+        "date": "2026-05-23T12:14:41.453337",
+        "read": false
+      }
+    ],
+    "frozen": false,
+    "otp_code": null,
+    "otp_expires_at": null
+  },
+  "9703847878": {
+    "account_number": "9703847878",
+    "name": "MICHAEL WANJALA JUMA",
+    "id_type": "National ID",
+    "id_number": "41124436",
+    "phone": "0700717410",
+    "email": "michaelljuma358@gmail.com",
+    "dob": "2003-11-24",
+    "kra_pin": "A1YDJSGF",
+    "kra_doc": "Untitled_kra_doc_9703847878_1779524664.jpg",
+    "biometric": "123",
+    "mpin": "2344",
+    "balance": 0.0,
+    "approved": true,
+    "status": "Active",
+    "transactions": [],
+    "transfer_requests": [],
+    "statement_requests": [],
+    "loan_requests": [],
+    "photo": "Untitled_photo_9703847878_1779524664.jpg",
+    "id_front": "Untitled_id_front_9703847878_1779524664.jpg",
+    "id_back": "Untitled_id_back_9703847878_1779524664.jpg",
+    "passport_front": "Untitled_passport_front_9703847878_1779524664.jpg",
+    "passport_back": null,
+    "created_at": "2026-05-23T01:24:24.167803",
+    "currency": "KSH",
+    "kyc_status": "Verified",
+    "email_verified": false,
+    "email_verification_token": null,
+    "notifications": [
+      {
+        "message": "Your KYC verification is complete.",
+        "date": "2026-05-23T12:16:06.430879",
+        "read": false
+      },
+      {
+        "message": "Your account has been reactivated by admin.",
+        "date": "2026-05-23T12:15:51.813176",
+        "read": false
+      },
+      {
+        "message": "Your account has been frozen by admin.",
+        "date": "2026-05-23T12:15:36.545229",
+        "read": false
+      }
+    ],
+    "frozen": false,
+    "otp_code": null,
+    "otp_expires_at": null
+  },
+  "2461085095": {
+    "account_number": "2461085095",
+    "name": "josep",
+    "id_type": "National ID",
+    "id_number": "5646757",
+    "phone": "0700717410",
+    "email": "michaelljum358@gmail.com",
+    "dob": "2026-05-04",
+    "kra_pin": "",
+    "kra_doc": null,
+    "biometric": "4720",
+    "mpin": "4720",
+    "currency": "EUR",
+    "balance": 0.0,
+    "available_balance": 0.0,
+    "approved": true,
+    "status": "Active",
+    "kyc_status": "Verified",
+    "email_verified": true,
+    "email_verification_token": null,
+    "notifications": [
+      {
+        "message": "Your account has been reactivated by admin.",
+        "date": "2026-05-23T12:29:19.820000",
+        "read": true
+      },
+      {
+        "message": "Your account has been frozen by admin.",
+        "date": "2026-05-23T12:28:31.509731",
+        "read": true
+      },
+      {
+        "message": "Your MPIN has been changed successfully.",
+        "date": "2026-05-23T12:25:25.889533",
+        "read": true
+      },
+      {
+        "message": "Your OTP code has been sent to your email.",
+        "date": "2026-05-23T12:20:46.382408",
+        "read": true
+      },
+      {
+        "message": "Your CBK account has been created by admin.",
+        "date": "2026-05-23T12:20:10.827669",
+        "read": true
+      }
+    ],
+    "frozen": false,
+    "transactions": [],
+    "transfer_requests": [],
+    "statement_requests": [
+      {
+        "start_date": "2026-05-15",
+        "end_date": "2026-05-23",
+        "requested_at": "2026-05-23T12:24:04.432958",
+        "status": "Pending"
+      }
+    ],
+    "loan_requests": [],
+    "photo": null,
+    "id_front": null,
+    "id_back": null,
+    "created_at": "2026-05-23T12:20:10.827614",
+    "otp_code": "821001",
+    "otp_expires_at": "2026-05-23T12:30:46.382354",
+    "currency_symbol": "\u20ac",
+    "loan_summary": {
+      "approved_count": 0,
+      "pending_count": 0,
+      "total_outstanding": "\u20ac0.00",
+      "next_payment": "N/A"
+    },
+    "unread_notifications": 0
+  },
+  "2533260813": {
+    "account_number": "2533260813",
+    "name": "SHARON OJIAMBO",
+    "id_type": "National ID",
+    "id_number": "2355677",
+    "phone": "074691445",
+    "email": "sharon345@gmail.com",
+    "dob": "2014-12-23",
+    "kra_pin": "adreerfrSDDFG",
+    "kra_doc": "Untitled_kra_doc_2533260813_1779565261.jpg",
+    "biometric": "4720",
+    "mpin": "4720",
+    "currency": "KSH",
+    "balance": 50000000.0,
+    "approved": true,
+    "status": "Active",
+    "kyc_status": "Verified",
+    "email_verified": false,
+    "email_verification_token": "987763",
+    "notifications": [
+      {
+        "message": "Your KYC verification is complete.",
+        "date": "2026-05-23T12:42:31.299020",
+        "read": false
+      },
+      {
+        "message": "Account request submitted. Verify your email to enable login.",
+        "date": "2026-05-23T12:41:01.192432",
+        "read": false
+      }
+    ],
+    "frozen": false,
+    "transactions": [
+      {
+        "type": "Deposit",
+        "amount": 50000000.0,
+        "balance": 50000000.0,
+        "date": "2026-05-23T12:43:01.269398",
+        "approved_by": "admin"
+      }
+    ],
+    "transfer_requests": [],
+    "statement_requests": [],
+    "loan_requests": [],
+    "photo": "Untitled_photo_2533260813_1779565261.jpg",
+    "id_front": "Untitled_id_front_2533260813_1779565261.jpg",
+    "id_back": "Untitled_id_back_2533260813_1779565261.jpg",
+    "created_at": "2026-05-23T12:41:01.192351",
+    "otp_code": null,
+    "otp_expires_at": null,
+    "available_balance": 50000000.0,
+    "currency_symbol": "KES",
+    "loan_summary": {
+      "approved_count": 0,
+      "pending_count": 0,
+      "total_outstanding": "KES0.00",
+      "next_payment": "N/A"
+    },
+    "unread_notifications": 2
+  },
+  "9048866770": {
+    "account_number": "9048866770",
+    "name": "job juma",
+    "id_type": "National ID",
+    "id_number": "3435454",
+    "phone": "070000000",
+    "email": "jobjuma453@gmail.com",
+    "dob": "1997-12-23",
+    "kra_pin": "A0163853845",
+    "kra_doc": "Untitled_kra_doc_9048866770_1779567087.jpg",
+    "biometric": "4720",
+    "mpin": "4720",
+    "currency": "EUR",
+    "balance": 600000.0,
+    "approved": true,
+    "status": "Active",
+    "kyc_status": "Verified",
+    "email_verified": false,
+    "email_verification_token": "242965",
+    "notifications": [
+      {
+        "message": "Loan request LOAN807467 submitted and pending approval.",
+        "date": "2026-05-23T13:29:11.977372",
+        "read": true
+      },
+      {
+        "message": "Your KYC verification is complete.",
+        "date": "2026-05-23T13:14:30.250614",
+        "read": true
+      },
+      {
+        "message": "Account request submitted. Verify your email to enable login.",
+        "date": "2026-05-23T13:11:27.219289",
+        "read": true
+      }
+    ],
+    "frozen": false,
+    "transactions": [
+      {
+        "type": "Deposit",
+        "amount": 400000.0,
+        "balance": 400000.0,
+        "date": "2026-05-23T13:15:19.926149",
+        "approved_by": "admin"
+      },
+      {
+        "type": "Transfer",
+        "bank": "KCB Bank Kenya",
+        "destination_account": "876575678",
+        "amount": 100000.0,
+        "balance": 300000.0,
+        "date": "2026-05-23T13:17:57.894897",
+        "transaction_id": "TXN320944",
+        "approved_by": "admin"
+      },
+      {
+        "type": "Loan",
+        "amount": 300000.0,
+        "balance": 600000.0,
+        "date": "2026-05-23T13:30:29.249513",
+        "loan_id": "LOAN807467",
+        "approved_by": "admin"
+      }
+    ],
+    "transfer_requests": [
+      {
+        "transaction_id": "TXN320944",
+        "bank": "KCB Bank Kenya",
+        "destination_account": "876575678",
+        "amount": 100000.0,
+        "status": "Completed",
+        "requested_at": "2026-05-23T13:17:29.132041",
+        "processed_at": "2026-05-23T13:17:57.893936"
+      }
+    ],
+    "statement_requests": [
+      {
+        "start_date": "2026-05-22",
+        "end_date": "2026-05-23",
+        "requested_at": "2026-05-23T13:20:53.651883",
+        "status": "Pending"
+      }
+    ],
+    "loan_requests": [
+      {
+        "loan_id": "LOAN807467",
+        "amount": 300000.0,
+        "purpose": "dghf",
+        "status": "Approved",
+        "requested_at": "2026-05-23T13:29:11.833723",
+        "term_months": 12,
+        "monthly_payment": 28000.0,
+        "repayment_schedule": [],
+        "processed_at": "2026-05-23T13:30:29.236210"
+      }
+    ],
+    "photo": "Untitled_photo_9048866770_1779567087.jpg",
+    "id_front": "Untitled_id_front_9048866770_1779567087.jpg",
+    "id_back": "Untitled_id_back_9048866770_1779567087.jpg",
+    "created_at": "2026-05-23T13:11:27.198119",
+    "otp_code": null,
+    "otp_expires_at": null,
+    "available_balance": 600000.0,
+    "currency_symbol": "\u20ac",
+    "loan_summary": {
+      "approved_count": 1,
+      "pending_count": 0,
+      "total_outstanding": "\u20ac300000.00",
+      "next_payment": "N/A"
+    },
+    "unread_notifications": 0
+  }
+}

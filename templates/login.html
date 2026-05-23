@@ -10,6 +10,7 @@
     <select name="method" id="method-select" onchange="updateCredentialLabel()">
       <option value="mpin">MPIN</option>
       <option value="biometric">Biometric Phrase</option>
+      <option value="otp">OTP Verification</option>
     </select>
 
     <label id="credential-label">Enter MPIN<span>*</span></label>
@@ -17,12 +18,22 @@
 
     <button type="submit">Login</button>
   </form>
+  <p style="margin-top:12px;"><a href="{{ url_for('reset_mpin') }}">Forgot MPIN? Reset here</a></p>
 </div>
 <script>
 function updateCredentialLabel() {
   const method = document.getElementById('method-select').value;
   const label = document.getElementById('credential-label');
-  label.textContent = method === 'mpin' ? 'Enter MPIN*' : 'Enter biometric phrase*';
+  if (method === 'mpin') {
+    label.textContent = 'Enter MPIN*';
+    document.getElementById('credential-input').type = 'password';
+  } else if (method === 'biometric') {
+    label.textContent = 'Enter biometric phrase*';
+    document.getElementById('credential-input').type = 'text';
+  } else {
+    label.textContent = 'Enter OTP code*';
+    document.getElementById('credential-input').type = 'text';
+  }
 }
 </script>
 {% endblock %}

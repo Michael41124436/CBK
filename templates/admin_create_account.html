@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="form-card">
-  <h2>Create CBK Account</h2>
+  <h2>Admin Create Customer Account</h2>
   <form method="post" enctype="multipart/form-data">
-    <label>Full Name<span>*</span></label>
+    <label>Customer Full Name<span>*</span></label>
     <input type="text" name="full_name" required>
 
     <label>Email Address<span>*</span></label>
@@ -21,13 +21,6 @@
     <label>ID / Passport Number<span>*</span></label>
     <input type="text" name="id_number" required>
 
-    <label>Account Currency<span>*</span></label>
-    <select name="currency">
-      {% for code, symbol in currencies.items() %}
-      <option value="{{ code }}">{{ code }} ({{ symbol }})</option>
-      {% endfor %}
-    </select>
-
     <label>Phone Number<span>*</span></label>
     <input type="text" name="phone" required>
 
@@ -37,22 +30,27 @@
     <label>MPIN (4 digits)<span>*</span></label>
     <input type="password" name="mpin" maxlength="4" required>
 
-    <label>KRA PIN<span>*</span></label>
-    <input type="text" name="kra_pin" required>
+    <label>Currency</label>
+    <select name="currency">
+      {% for code, symbol in currencies.items() %}
+      <option value="{{ code }}">{{ code }} ({{ symbol }})</option>
+      {% endfor %}
+    </select>
 
-    <label>KRA PIN Document<span>*</span></label>
-    <input type="file" name="kra_doc" accept="image/*,application/pdf" required>
+    <hr>
+    <h3>Optional: Upload Documents</h3>
+    
+    <label>Customer Photo (Optional)</label>
+    <input type="file" name="photo" accept="image/*">
 
-    <label>Profile Photo<span>*</span></label>
-    <input type="file" name="photo" accept="image/*" required>
+    <label>ID Front (Optional)</label>
+    <input type="file" name="id_front" accept="image/*">
 
-    <label>ID / Passport Front Image<span>*</span></label>
-    <input type="file" name="id_front" accept="image/*" required>
+    <label>ID Back (Optional)</label>
+    <input type="file" name="id_back" accept="image/*">
 
-    <label>ID / Passport Back Image<span>*</span></label>
-    <input type="file" name="id_back" accept="image/*" required>
-
-    <button type="submit">Create Account Request</button>
+    <button type="submit">Create Customer Account</button>
   </form>
+  <a class="button button-secondary" href="{{ url_for('admin_dashboard') }}" style="margin-top: 20px; display: inline-block;">Back to Admin Dashboard</a>
 </div>
 {% endblock %}

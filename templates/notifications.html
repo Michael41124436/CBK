@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-card">
+  <h2>Notification Center</h2>
+  {% if account.notifications %}
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Message</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for note in account.notifications %}
+      <tr>
+        <td>{{ note.date[:19].replace('T', ' ') }}</td>
+        <td>{{ note.message }}</td>
+        <td>{{ 'Unread' if not note.read else 'Read' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No notifications yet.</p>
+  {% endif %}
+  <a class="button button-secondary" href="{{ url_for('dashboard') }}" style="margin-top: 20px; display: inline-block;">Back to Dashboard</a>
+</div>
+{% endblock %}
